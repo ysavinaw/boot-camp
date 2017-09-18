@@ -1,0 +1,106 @@
+//Create function that retuns true when parameter is string
+
+function isString(str) {
+  if (typeof str === 'string'){
+    console.log(true);
+  } else {
+    console.log(false);
+  }
+}
+isString('hello')   //true
+isString(['what what']); //false
+isString({ a : 2 });  //true
+
+//create function that returns true if parameter is an array
+
+function isArray(arr){
+  console.log(Array.isArray(arr));
+}
+isArray('hello'); // => false
+isArray(['hello']); // => true
+isArray([2, {}, 10]); // => true
+isArray({ a: 2 }); // => false
+
+//Create a function that checks whether all the element of an array are the same datatype
+
+function areSameType(arr){
+  for (var i = 0; i <arr.length - 1; i++){
+    for (var j = i + 1; j < arr.length - 1; j++){
+      if (typeof arr[i] === typeof arr[j]) {
+          return true;
+        }//end if statement
+      } //end nested for loop
+    } return false; // return false after the first for loop
+}
+console.log(areSameType(['hello', 'world', 'long sentence'])); // => true
+console.log(areSameType([1, 2, 9, 10])); // => true
+console.log(areSameType([['hello'], 'hello', ['bye']])); // => false
+console.log(areSameType([['hello'], [1, 2, 3], [{ a: 2 }]])); // => true
+
+//SAME PROBLEM - DIFFERENT SOLUTION BY USING A SECOND FUNCTION
+function whatType(arr2) {
+  //return Array.isArray(arr2) ? "array" : "object";
+  if (typeof arr2 === "object") {
+    return Array.isArray(arr2) ? "array" : "object";
+  } //ends if statement
+  return typeof arr2; //return type of array if not object
+} //ends function
+
+function areSameType(arr) {
+  var first = whatType(arr[0]);
+  for (var i = 1; i < arr.length - 1; i++){
+    var others = whatType(arr[i]);
+      if (first === others) {
+        return true;
+      }//ends if statement
+    } //end for loop
+    return false;
+} //ends function
+
+console.log(areSameType(['hello', 'world', 'long sentence'])); // => true
+console.log(areSameType([1, 2, 9, 10])); // => true
+console.log(areSameType([['hello'], 'hello', ['bye']])); // => false
+console.log(areSameType([['hello'], [1, 2, 3], [{ a: 2 }]])); // => true
+
+// SORTING AND REMOVING DUPLICATES
+
+function longest(a, b) {
+  var str = a + b;
+  var newArray = [];
+  for (var i = 0; i <= str.length - 1; i++) {
+    if (newArray.indexOf(str[i]) === -1) {
+      newArray.push(str[i]);
+    }
+  } //ends main  for loop
+return newArray.sort();toString(); //sorts into alphebetical order and makes it a String
+} //ends function
+
+console.log(longest('xyaabbbccccdefww', 'xxxxyyyyabklmopq'));
+
+
+//convert number to reversed array of digits
+function convert(num) {
+n = num.toString();
+return n.split("").reverse().join("");
+}
+console.log(convert(429563));
+console.log(convert(324));
+
+
+//count Repetitions and return Object
+
+
+
+
+// Cat and Mouse
+function isCaught(str) {
+  var catchMouse = /C.{1,2}[m]/g;
+  var result = catchMouse.test(str);
+  return result;
+}
+console.log(isCaught('C.....m')); // => false
+console.log(isCaught('C..m')); // => true
+console.log(isCaught('..C..m')); // => true
+
+// Split the Bill
+
